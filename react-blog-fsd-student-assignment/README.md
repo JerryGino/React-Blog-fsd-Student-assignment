@@ -8,15 +8,15 @@ This project builds upon your existing frontend (React) and backend (microservic
 
 The provided codebase includes:
 
-*   **Frontend:** The React blog application you built earlier.
+- **Frontend:** The React blog application you built earlier.
 
-*   **Backend:** A microservice architecture with:
+- **Backend:** A microservice architecture with:
 
-    *   **API Gateway:** A fully implemented gateway for routing requests.
+  - **API Gateway:** A fully implemented gateway for routing requests.
 
-    *   **Auth Service:** A fully implemented service for user authentication.
+  - **Auth Service:** A fully implemented service for user authentication.
 
-    *   **Blog Service:** A partially completed service managing blog posts.
+  - **Blog Service:** A partially completed service managing blog posts.
 
 ## Your Tasks
 
@@ -30,35 +30,35 @@ Your mission is to complete the `blog-service` and integrate it with the fronten
 
 **Integration and Testing:**
 
-*   For each feature you implement, update the frontend to interact with the new backend endpoints.
+- For each feature you implement, update the frontend to interact with the new backend endpoints.
 
-*   Write comprehensive test cases (using Jest and Supertest) for all new backend code.
+- Write comprehensive test cases (using Jest and Supertest) for all new backend code.
 
-*   Update the API documentation (provided in the `docs` folder) to reflect your changes.
+- Update the API documentation (provided in the `docs` folder) to reflect your changes.
 
 ## Project Structure
 
-blog-project/ 
-├── frontend/          # React frontend application 
-├── backend/           # Microservices backend 
-│   ├── api-gateway/   # Fully implemented API Gateway 
-│   ├── auth-service/  # Fully implemented Auth Service 
-│   ├── blog-service/  # Partially completed Blog Service 
-│   └── ...            # Other necessary backend files (e.g., Dockerfile, dependencies) 
-├── docs/              # API documentation (e.g., Swagger, Postman collection) 
-└── README.md          # This file
+blog-project/
+├── frontend/ # React frontend application
+├── backend/ # Microservices backend
+│ ├── api-gateway/ # Fully implemented API Gateway
+│ ├── auth-service/ # Fully implemented Auth Service
+│ ├── blog-service/ # Partially completed Blog Service
+│ └── ... # Other necessary backend files (e.g., Dockerfile, dependencies)
+├── docs/ # API documentation (e.g., Swagger, Postman collection)
+└── README.md # This file
 
 ## Daily Breakdown
 
 This project is divided into four parts:
 
-*   **Day 1: Update Post Functionality**
+- **Day 1: Update Post Functionality**
 
-*   **Day 2: Delete Post Functionality**
+- **Day 2: Delete Post Functionality**
 
-*   **Day 3: Comments Functionality**
+- **Day 3: Comments Functionality**
 
-*   **Day 4: Likes Functionality**
+- **Day 4: Likes Functionality**
 
 (See detailed instructions for each day below.)
 
@@ -72,65 +72,65 @@ This project is divided into four parts:
 
 1.  **Create a MongoDB Atlas Account:**
 
-    *   Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+    - Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 
-    *   Sign up for a free account or log in (you can use your Google account).
+    - Sign up for a free account or log in (you can use your Google account).
 
 2.  **Create Database Access Credentials:**
 
-    *   After logging in, navigate to the **Database Access** tab (under Security in the left-hand menu).
+    - After logging in, navigate to the **Database Access** tab (under Security in the left-hand menu).
 
-    *   Click **Add New Database User**.
+    - Click **Add New Database User**.
 
-    *   Choose **Password** authentication.
+    - Choose **Password** authentication.
 
-    *   Enter a username and a strong password. **Important:** Remember these credentials; you'll need them later.
+    - Enter a username and a strong password. **Important:** Remember these credentials; you'll need them later. username USER password SeecretPas!
 
-    *   Under **Database User Privileges**, select **Read and write to any database**. (For production, you'd use more restrictive permissions.)
+    - Under **Database User Privileges**, select **Read and write to any database**. (For production, you'd use more restrictive permissions.)
 
-    *   Click **Add User**.
+    - Click **Add User**.
 
 3.  **Set Up Network Access:**
 
-    *   Go to the **Network Access** tab (under Security).
+    - Go to the **Network Access** tab (under Security).
 
-    *   Click **Add IP Address**.
+    - Click **Add IP Address**.
 
-    *   **Option 1 (Development):** Click **Allow Access From Anywhere**. This is easiest for development but **not recommended for production**.
+    - **Option 1 (Development):** Click **Allow Access From Anywhere**. This is easiest for development but **not recommended for production**.
 
-    *   **Option 2 (More Secure):** Click **Add Current IP Address**. This is more secure but requires you to update the IP address if your network changes.
+    - **Option 2 (More Secure):** Click **Add Current IP Address**. This is more secure but requires you to update the IP address if your network changes.
 
-    *   Click **Confirm**.
+    - Click **Confirm**.
 
 4.  **Create a Cluster:**
 
-    *   In the left-hand menu, click **Database**.
+    - In the left-hand menu, click **Database**.
 
-    *   Click **Create**.
+    - Click **Create**.
 
-    *   Select **M0 Sandbox** (the free tier) and choose a provider and region (choose one close to you).
+    - Select **M0 Sandbox** (the free tier) and choose a provider and region (choose one close to you).
 
-    *   Give your cluster a name (e.g., "blog-cluster").
+    - Give your cluster a name (e.g., "blog-cluster").
 
-    *   Click **Create Cluster**. It will take a few minutes to deploy.
+    - Click **Create Cluster**. It will take a few minutes to deploy.
 
 5.  **Get the Connection String:**
 
-    *   Once your cluster is ready, click the **Connect** button.
+    - Once your cluster is ready, click the **Connect** button.
 
-    *   Choose **Connect your application**.
+    - Choose **Connect your application**.
 
-    *   Select **Node.js** as the driver and choose the latest version.
+    - Select **Node.js** as the driver and choose the latest version.
 
-    *   Copy the connection string. It will look like this:
+    - Copy the connection string. It will look like this:
 
-        ```
+      ```
 
-        mongodb+srv://<username>:<password>@clustername.mongodb.net/<dbname>?retryWrites=true&w=majority
+      mongodb+srv://<username>:<password>@clustername.mongodb.net/<dbname>?retryWrites=true&w=majority
 
-        ```
+      ```
 
-        **Important:** Replace `<username>`, `<password>`, and `<dbname>` (if you want a specific database name; otherwise, it defaults to `test`) with your actual credentials and database name. **Save this connection string securely; you'll need it in the next step.**
+      **Important:** Replace `<username>`, `<password>`, and `<dbname>` (if you want a specific database name; otherwise, it defaults to `test`) with your actual credentials and database name. **Save this connection string securely; you'll need it in the next step.**
 
 #### 1.2 Project Setup (Backend Code)
 
@@ -138,93 +138,93 @@ This project is divided into four parts:
 
 2.  **Install Dependencies:**
 
-    *   Open your terminal and navigate to the `backend` directory.
+    - Open your terminal and navigate to the `backend` directory.
 
-    *   Then, navigate into each service directory (`api-gateway`, `auth-service`, `blog-service`) one by one.
+    - Then, navigate into each service directory (`api-gateway`, `auth-service`, `blog-service`) one by one.
 
-    *   Run the following command in each service directory:
+    - Run the following command in each service directory:
 
-        ```bash
+      ```bash
 
-        npm install
+      npm install
 
-        ```
+      ```
 
 3.  **Install Testing Libraries:**
 
-    *   In each service directory (`api-gateway`, `auth-service`, `blog-service`), run:
+    - In each service directory (`api-gateway`, `auth-service`, `blog-service`), run:
 
-        ```bash
+      ```bash
 
-        npm install --save-dev jest supertest
+      npm install --save-dev jest supertest
 
-        ```
+      ```
 
 4.  **Configure Environment Variables (.env):**
 
-    *   **Important:** Each service has a `.env.example` file. Rename it to `.env` in each service directory
+    - **Important:** Each service has a `.env.example` file. Rename it to `.env` in each service directory
 
-    *   **api-gateway/.env:**
+    - **api-gateway/.env:**
 
-        ```
+      ```
 
-        PORT=5000 # Choose a port for the API Gateway
+      PORT=5000 # Choose a port for the API Gateway
 
-        AUTH_SERVICE_URL=http://localhost:5001 # URL of the auth service
+      AUTH_SERVICE_URL=http://localhost:5001 # URL of the auth service
 
-        BLOG_SERVICE_URL=http://localhost:5002 # URL of the blog service
+      BLOG_SERVICE_URL=http://localhost:5002 # URL of the blog service
 
-        ```
+      ```
 
-    *   **auth-service/.env:**
+    - **auth-service/.env:**
 
-        ```
+      ```
 
-        PORT=5001 # Choose a port for the auth service
+      PORT=5001 # Choose a port for the auth service
 
-        MONGO_URI=<YOUR_MONGODB_ATLAS_CONNECTION_STRING> # Paste your connection string here
+      MONGO_URI=<YOUR_MONGODB_ATLAS_CONNECTION_STRING> # Paste your connection string here
 
-        JWT_SECRET=your-secret-key # Choose a strong secret key for JWT
+      JWT_SECRET=your-secret-key # Choose a strong secret key for JWT
 
-        ```
+      ```
 
-    *   **blog-service/.env:**
+    - **blog-service/.env:**
 
-        ```
+      ```
 
-        PORT=5002 # Choose a port for the blog service
+      PORT=5002 # Choose a port for the blog service
 
-        MONGO_URI=<YOUR_MONGODB_ATLAS_CONNECTION_STRING> # Paste your connection string here
+      MONGO_URI=<YOUR_MONGODB_ATLAS_CONNECTION_STRING> # Paste your connection string here
 
-        AUTH_SERVICE_URL=http://localhost:5001
+      AUTH_SERVICE_URL=http://localhost:5001
 
-        ```
+      ```
 
-        **Important:**
+      **Important:**
 
-        *   Make sure the `MONGO_URI` is correct in both `auth-service` and `blog-service`.
+      - Make sure the `MONGO_URI` is correct in both `auth-service` and `blog-service`.
 
-        *   Use unique port numbers for each service.
+      - Use unique port numbers for each service.
 
-        *   The `JWT_SECRET` in `auth-service` should be a long, random, and secure string.
+      - The `JWT_SECRET` in `auth-service` should be a long, random, and secure string.
 
 #### 1.3 Running the Backend
 
 1.  **Start Each Service:**
 
-    *   Open three separate terminal windows (one for each service).
+    - Open three separate terminal windows (one for each service).
 
-    *   In each terminal, navigate to the service's directory (`api-gateway`, `auth-service`, `blog-service`).
+    - In each terminal, navigate to the service's directory (`api-gateway`, `auth-service`, `blog-service`).
 
-    *   Run:
+    - Run:
 
-        ```bash
+      ```bash
 
-        node server.js 
+      node server.js
 
-        ```
+      ```
 
-        (or `node index.js` or whichever is the main entry point file for that service, you can check in the package.json scripts to identify the main entry point)
+      (or `node index.js` or whichever is the main entry point file for that service, you can check in the package.json scripts to identify the main entry point)
 
 2.  **Verify:** You should see messages indicating that each service has started successfully and is connected to the database.
 
@@ -244,11 +244,11 @@ This project is divided into four parts:
 
 3.  **Configure API Base URL:**
 
-    *   Rename the `.env.example` file in the `frontend` directory to `.env`
+    - Rename the `.env.example` file in the `frontend` directory to `.env`
 
-    *   Open the `.env` file.
+    - Open the `.env` file.
 
-    *   Update the `API_BASE_URL` (or a similar variable) to match the URL where your API Gateway is running (e.g., `http://localhost:5000` if you used port 5000 for the API Gateway).
+    - Update the `API_BASE_URL` (or a similar variable) to match the URL where your API Gateway is running (e.g., `http://localhost:5000` if you used port 5000 for the API Gateway).
 
 #### 2.2 Running the Frontend
 
@@ -266,11 +266,11 @@ This project is divided into four parts:
 
 #### 2.3 Running Frontend Tests
 
-   * In the `frontend` directory, run
+- In the `frontend` directory, run
 
-   ```bash
+```bash
 
-   npm test
+npm test
 
 #### Troubleshooting
 1. Port Conflicts: If you get an error about a port being in use, make sure you've used unique port numbers in your .env files and that no other applications are using those ports.
@@ -278,3 +278,4 @@ This project is divided into four parts:
 3. Frontend Not Connecting: Make sure the API_BASE_URL in your frontend's .env file is correct and that the API Gateway is running. Use your browser's developer tools (Network tab) to see if API requests are being made and if they're successful.
 
 ## Good luck, and happy coding!
+```
